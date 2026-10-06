@@ -5,7 +5,7 @@ good your mobile signal really is: the actual numbers behind the bars, in plain 
 There are no ads, no account, and no internet access at all.
 
 **Download:** the latest build is always the **Alaimaani.apk** file on the
-[`signal-latest` release](https://github.com/Akrishna87/Akrishna87/releases/tag/signal-latest).
+[`signal-latest` release](https://github.com/Akrishna87/alaimaani/releases/tag/signal-latest).
 Open it on your phone and allow installing from your browser when asked.
 Each new build installs as an update over the last one.
 
@@ -57,11 +57,11 @@ This is a standard Gradle project (Kotlin, Jetpack Compose), built with JDK 17:
 ```
 
 CI (`.github/workflows/signal-apk.yml`) runs the unit tests and builds the
-release APK on every push that touches `signal-android/`, signs it, runs it on
+release APK on every push to this repo, signs it, runs it on
 an Android 14 emulator (`ci/smoke-test.sh`), and publishes it to the
 `signal-latest` release with the emulator's screenshots.
 
 **Signing:** release builds are signed with Isaialai's private key
-(`music-player-android/signing/release.keystore.gpg`, unlocked in CI with the
+(`signing/release.keystore.gpg` (a copy of Isaialai's key), unlocked in CI with the
 `SIGNING_PASSPHRASE` secret), so no public key is ever used. See
-[`music-player-android/SECURITY.md`](../music-player-android/SECURITY.md).
+[Isaialai's SECURITY.md](https://github.com/Akrishna87/isaialai/blob/main/SECURITY.md).
