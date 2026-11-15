@@ -64,9 +64,9 @@ This is a standard Gradle project (Kotlin, Jetpack Compose), built with JDK 17:
 ```
 
 CI (`.github/workflows/signal-apk.yml`) runs the unit tests and builds the
-release APK on every push to this repo, signs it, runs it on
-an Android 14 emulator (`ci/smoke-test.sh`), and publishes it to the
-`signal-latest` release with the emulator's screenshots.
+release APK on every push, then runs it on an Android 14 emulator
+(`ci/smoke-test.sh`). Only pushes to `main` publish the signed APK and emulator
+screenshots to the `signal-latest` release.
 
 **Signing:** release builds are signed with Isaialai's private key
 (`signing/release.keystore.gpg` (a copy of Isaialai's key), unlocked in CI with the
