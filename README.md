@@ -26,6 +26,10 @@ Each new build installs as an update over the last one.
   (Bedroom, Balcony…) and hold still for 20 seconds. Alaimaani averages the
   signal there and ranks your spots, separately for each SIM. The screen stays on
   while measuring.
+- **Wi-Fi survey:** connect to your home Wi-Fi, measure rooms for 20 seconds,
+  and compare their average signal strength in dBm. Measurements are stored on
+  the phone; Alaimaani reads only the connected Wi-Fi link and never scans or
+  saves nearby network names.
 - **Guide:** what the numbers mean, the difference between 5G kinds, low vs high
   bands, and what to do about a weak signal.
 
@@ -36,6 +40,9 @@ Each new build installs as an update over the last one.
   (band, cell ID, nearby towers) with apps that have location permission, and
   only while the phone's Location switch is on. Alaimaani never reads or saves
   where you are, and has no `INTERNET` permission.
+- **Wi-Fi state** (`ACCESS_WIFI_STATE`, `ACCESS_NETWORK_STATE`): to read the
+  signal strength of the Wi-Fi network you're connected to. These permissions
+  don't show a prompt. Nearby networks aren't scanned.
 
 Without them it still shows the main signal reading for the default SIM.
 
@@ -57,9 +64,9 @@ This is a standard Gradle project (Kotlin, Jetpack Compose), built with JDK 17:
 ```
 
 CI (`.github/workflows/signal-apk.yml`) runs the unit tests and builds the
-release APK on every push to this repo, signs it, runs it on
-an Android 14 emulator (`ci/smoke-test.sh`), and publishes it to the
-`signal-latest` release with the emulator's screenshots.
+release APK on every push, then runs it on an Android 14 emulator
+(`ci/smoke-test.sh`). Only pushes to `main` publish the signed APK and emulator
+screenshots to the `signal-latest` release.
 
 **Signing:** release builds are signed with Isaialai's private key
 (`signing/release.keystore.gpg` (a copy of Isaialai's key), unlocked in CI with the

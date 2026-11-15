@@ -88,6 +88,8 @@ jobs:
             smoke-out/*.txt
 
   publish:
+    # Feature branches may run the build and smoke test, but never replace the public APK release.
+    if: github.ref == 'refs/heads/main'
     needs: [build, smoke-test]
     runs-on: ubuntu-latest
     permissions:

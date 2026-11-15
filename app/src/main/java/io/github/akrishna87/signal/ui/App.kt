@@ -26,6 +26,7 @@ import androidx.compose.material.icons.rounded.LocationOn
 import androidx.compose.material.icons.rounded.PhoneAndroid
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.SignalCellularAlt
+import androidx.compose.material.icons.rounded.Wifi
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -62,6 +63,7 @@ import io.github.akrishna87.signal.SignalViewModel
 private enum class Tab(val label: String, val icon: ImageVector) {
     SIGNAL("Signal", Icons.Rounded.SignalCellularAlt),
     SPOTS("Best spot", Icons.Rounded.Place),
+    WIFI("Wi-Fi", Icons.Rounded.Wifi),
     GUIDE("Guide", Icons.AutoMirrored.Rounded.MenuBook),
 }
 
@@ -125,6 +127,7 @@ fun SignalApp(vm: SignalViewModel = viewModel()) {
             when (Tab.entries[tab]) {
                 Tab.SIGNAL -> NowScreen(vm, permissions)
                 Tab.SPOTS -> SpotScreen(vm)
+                Tab.WIFI -> WifiSurveyScreen()
                 Tab.GUIDE -> GuideScreen()
             }
         }
